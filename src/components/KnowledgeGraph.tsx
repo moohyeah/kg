@@ -82,12 +82,11 @@ const KnowledgeGraph = forwardRef<KnowledgeGraphRef, KnowledgeGraphProps>(({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      fontWeight: 'bold',
       textAlign: 'center',
       cursor: 'pointer',
       transition: 'all 0.3s ease',
       backdropFilter: 'blur(10px)',
-      border: isSelected ? '3px solid #4facfe' : '2px solid rgba(255, 255, 255, 0.1)',
+      border: isSelected ? '3px solid #44587B' : 'none',
       userSelect: 'none',
       // boxShadow: isSelected ? '0 0 30px rgba(79, 172, 254, 0.6)' : '0 8px 32px rgba(0, 0, 0, 0.3)',
       transform: 'translate(-50%, -50%)',
@@ -95,10 +94,10 @@ const KnowledgeGraph = forwardRef<KnowledgeGraphRef, KnowledgeGraphProps>(({
     };
 
     const typeStyles = {
-      core: { width: '140px', height: '140px', background: '#f9faf6ff', fontSize: '18px' },
-      primary: { width: '100px', height: '100px', background: '#f1db10ff', fontSize: '14px' },
-      secondary: { width: '80px', height: '80px', background: '#4facfe', fontSize: '12px' },
-      tertiary: { width: '70px', height: '70px', background: '#43e97b', fontSize: '11px' }
+      core: { width: '140px', height: '140px', background: '#ECBD46ff', fontSize: '18px' },
+      primary: { width: '100px', height: '100px', background: '#6790F1ff', fontSize: '14px' },
+      secondary: { width: '80px', height: '80px', background: '#8BD2F4ff', fontSize: '12px' },
+      tertiary: { width: '70px', height: '70px', background: '#81D9ACff', fontSize: '11px' }
     };
 
     return { ...baseStyle, ...typeStyles[nodeType as keyof typeof typeStyles] };
@@ -122,11 +121,11 @@ const KnowledgeGraph = forwardRef<KnowledgeGraphRef, KnowledgeGraphProps>(({
       top: `${fromY}%`,
       width: `${length}%`,
       height: isHighlighted ? '3px' : '2px',
-      background: isHighlighted ? 'linear-gradient(90deg, #4facfe, #00f2fe, #4facfe)' : 'linear-gradient(90deg, rgba(255,255,255,0.2), rgba(79,172,254,0.4), rgba(255,255,255,0.2))',
+      background: isHighlighted ? '#ECBD46ff' : '#B9BECAff',
       transform: `rotate(${angle}deg)`,
       transformOrigin: '0 50%',
       zIndex: 1,
-      boxShadow: isHighlighted ? '0 0 10px #4facfe' : 'none',
+      // boxShadow: isHighlighted ? '0 0 10px #4facfe' : 'none',
       opacity: isHighlighted ? 1 : 0.6,
       transition: 'all 0.3s ease'
     };
@@ -229,7 +228,7 @@ const KnowledgeGraph = forwardRef<KnowledgeGraphRef, KnowledgeGraphProps>(({
               top: `${nodeData.y}%`,
               animation: animationEnabled ? `float 6s ease-in-out infinite ${Math.random() * 3}s` : 'none'
             }}
-            className="hover:scale-110 hover:z-[200] hover:shadow-2xl"
+            className="hover:scale-110 hover:z-[200] hover:shadow-2xl text-white"
             onClick={() => handleNodeClick(id, nodeData)}
             onMouseEnter={() => handleNodeHover(id, nodeData)}
           >

@@ -17,12 +17,11 @@ const App: React.FC = () => {
   const [graphData, setGraphData] = useState<GraphData>();
 
   const handleNodeClick = (nodeId: string, nodeData: GraphNode) => {
-    console.log('Node clicked:', nodeId, nodeData.info.desc);
     chatRef.current?.addAssistantMessage(nodeData.info.desc);
+    graphRef.current?.highlightPathByLabel(nodeData?.label);
   };
 
   const handleNodeHover = (nodeId: string, nodeData: GraphNode) => {
-    console.log('Node hovered:', nodeId, nodeData.info.desc);
   };
 
   const handleMessage = async (message: string): Promise<string> => {
@@ -48,7 +47,7 @@ const App: React.FC = () => {
           console.log(data?.target_node);
           setTimeout(() => {
             graphRef.current?.highlightPathByLabel(data?.target_node?.label);
-          }, 500);
+          }, 1000);
           return data?.target_node?.info?.desc || '';
         }
       } catch (error) {
